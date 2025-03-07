@@ -71,6 +71,29 @@ def putere(matrix,n):
     for i in range (1,n):
         matrix=np.dot(matrix,matrix)
     print(matrix)
+'''Implementați algoritmul de sortare prin inserție în liste/vectori'''
+def insert_sort(list):
+    for i in range(1,len(list)):
+        key=list[i]
+        k=i-1
+        while k>=0 and key<list[k]:
+            list[k+1]=list[k]
+            k-=1
+            list[k+1]=key
+
+
+'''Verificați proprietatea unei permutări de a fi permutarea identică. '''
+def verificaprop(list):
+    conditie=True
+    for i in range (len(list)):
+        if(list[i]!=i):
+            conditie=False
+            break
+    return conditie
+'''Fie S mulțimea vectorilor binari de lungime 7. Calculați, prin generare aleatoare, o matrice
+A cu 20 de linii, vectori din S și un vector V cu 20 de elemente, fiecare 𝑉[𝑖] reprezentând
+calitatea liniei i din A, definită prin suma biților vectorului linie i'''
+
 
 def main():
     matrix=np.loadtxt('matrix.txt')
@@ -89,5 +112,15 @@ def main():
     matrix4=np.loadtxt('matrix4.txt')
     inmultire(matrix3,matrix4)
     putere(matrix4,1)
+    lista=np.loadtxt('lista.txt')
+    insert_sort(lista)
+    print(lista)
+    lista2=np.loadtxt('lista2.txt')
+    insert_sort(lista2)
+    if(verificaprop(lista2)):
+        print('Da')
+    else:
+        print('Nu')
+
 
 main()
