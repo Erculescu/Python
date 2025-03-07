@@ -94,6 +94,8 @@ def verificaprop(list):
 A cu 20 de linii, vectori din S și un vector V cu 20 de elemente, fiecare 𝑉[𝑖] reprezentând
 calitatea liniei i din A, definită prin suma biților vectorului linie i'''
 
+
+
 def main():
     matrix=np.loadtxt('matrix.txt')
     print(nrLinii(matrix))
