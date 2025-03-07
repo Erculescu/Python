@@ -93,6 +93,42 @@ def verificaprop(list):
 '''Fie S mulțimea vectorilor binari de lungime 7. Calculați, prin generare aleatoare, o matrice
 A cu 20 de linii, vectori din S și un vector V cu 20 de elemente, fiecare 𝑉[𝑖] reprezentând
 calitatea liniei i din A, definită prin suma biților vectorului linie i'''
+def functie(numar):
+    np.random.seed(numar)
+    num_rows = 20
+    vector_length = 7
+    A = np.random.randint(2, size=(num_rows, vector_length))
+    V = A.sum(axis=1)
+    print("Matricea A:")
+    print(A)
+    print("\nVectorul de calitate V:")
+    print(V)
+
+'''. Implementați algoritmul hill-climbing pentru a calcula maximul funcției
+𝑓:{1,2, … ,2500} → ℝ, 𝑓(𝑥) = (𝑠𝑖𝑛(𝑥 − 2))^(2)− 𝑥 ∗ 𝑐𝑜𝑠(𝑥).'''
+def f(x):
+    return (np.sin(x-2)**2)-(x*np.cos(x))
+def hc(funct,start,pas,iteratiemax):
+    curentx=start
+    curenty=funct(curentx)
+
+    for _ in range(iteratiemax):
+        vecini=[curentx+pas,curentx-pas]
+        bunx=curenty
+        buny=curentx
+        for vecin in vecini:
+            if 1<=vecin<=2500:
+                veciny=funct(vecin)
+                if veciny>buny:
+                    buny=veciny
+                    bunx=vecin
+        if bunx==curentx:
+            break
+        curentx=bunx
+        curenty=buny
+    return curentx,curenty
+
+
 
 def main():
     matrix=np.loadtxt('matrix.txt')
@@ -120,6 +156,12 @@ def main():
         print('Da')
     else:
         print('Nu')
-
+    functie(88)
+    start=1
+    pas=0.1
+    iteratiimax=2500
+    optim_x,optim_y=hc(f,start,pas,iteratiimax)
+    print("x= ",optim_x)
+    print("f(x)= ",optim_y)
 
 main()
