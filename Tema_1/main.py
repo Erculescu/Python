@@ -130,6 +130,8 @@ def hc(funct,start,pas,iteratiemax):
 
 
 
+
+
 def main():
     matrix=np.loadtxt('matrix.txt')
     print(nrLinii(matrix))
